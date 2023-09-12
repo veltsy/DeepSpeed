@@ -610,7 +610,7 @@ def init_distributed(dist_backend=None,
                      dist_init_required=None,
                      config=None,
                      rank=-1,
-                     world_size=-1):
+                     world_size=int(os.getenv('WORLD_SIZE', '-1'))):
     ''' Initialize dist backend, potentially performing MPI discovery if needed
 
     Arguments:
