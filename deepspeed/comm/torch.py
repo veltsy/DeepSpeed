@@ -101,7 +101,7 @@ class TorchBackend(Backend):
         needed.
     """
 
-    def __init__(self, backend, timeout, init_method, rank=-1, world_size=-1, name='torch'):
+    def __init__(self, backend, timeout, init_method, rank=-1, world_size=int(os.getenv('WORLD_SIZE', '-1')), name='torch'):
         super(TorchBackend, self).__init__()
         self.has_all_reduce_coalesced = has_all_reduce_coalesced()
         self.has_coalescing_manager = has_coalescing_manager()
